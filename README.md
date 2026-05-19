@@ -1,6 +1,6 @@
 # Alona OS — Infra
 
-Deployment and host setup for running **Alona OS** on a **Raspberry Pi** (or any Debian-based edge host).
+Deployment and host setup for the **alona-os system** on a **Raspberry Pi** (or any Debian-based edge host).
 
 This repo is intentionally separate from **`alona-os-core`** (application) and **`alona-os-firmware`** (ESP32 nodes). See workspace context in **`.cursor/rules/alona-os-project.mdc`** and setup in **`alona-os-setup.mdc`**:
 
@@ -32,7 +32,7 @@ After host setup, deploy and run the app from **`alona-os-core`** (see [Deploy t
 | Component | Purpose |
 |-----------|---------|
 | **PostgreSQL** | `alona_os_core_prod` database for `alona_core` |
-| **Mosquitto** | MQTT broker for Cerbo GX, ESP32 nodes, and `alona_ingest` |
+| **Mosquitto** | MQTT broker on the **alona-os system** (Cerbo GX, ESP32 nodes, `alona_ingest`) |
 | **Erlang/Elixir** | Runtime to build and run the umbrella (apt; version check included) |
 | **Build tools** | `git`, `build-essential`, SSL/NCurses libs for native deps |
 
