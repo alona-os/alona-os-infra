@@ -1,0 +1,26 @@
+# Example systemd unit for alona-os-core on a Raspberry Pi.
+# Install:
+#   sudo cp systemd/alona-ui.service.example /etc/systemd/system/alona-ui.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now alona-ui
+#
+# Edit User, WorkingDirectory, and EnvironmentFile for your install.
+
+[Unit]
+Description=Alona OS Phoenix (alona_ui)
+After=network-online.target postgresql.service mosquitto.service
+Wants=network-online.target postgresql.service mosquitto.service
+
+[Service]
+Type=exec
+User=alona
+Group=alona
+WorkingDirectory=/home/alona/alona-os-core
+EnvironmentFile=/etc/alona/alona.env
+ExecStart=/usr/bin/mix phx.server
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
